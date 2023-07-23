@@ -57,12 +57,13 @@ If you have already installed the role and want to update it to the latest relea
 ansible-galaxy install -f nginxinc.nginx
 ```
 
-Step 3: Clone Ansible Playbook Repository
-Clone the Ansible playbook repository and navigate into it:
-
+Step 3: Fromt the Cloned Repo, you will find the Ansible playbook under the "ansible" directory. 
 ```
-git clone https://github.com/alessfg/nginx-ansible-demo.git
-cd nginx-ansible-demo
+ls
+                    			2-deploy-nginx-web-server.yml			5-check-app-protect.yml
+1-deploy-nginx-oss.yml				3-deploy-nginx-web-server-proxy.yml		
+1-deploy-nginx.yml				4-deploy-nginx-app-protect-web-server-proxy.yml	
+
 ```
 
 Step 4: Set Up Inventory File
