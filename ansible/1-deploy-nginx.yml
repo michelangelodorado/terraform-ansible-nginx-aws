@@ -1,0 +1,12 @@
+---
+- name: Deploy NGINX Plus
+  hosts: aws_ec2
+  become: true
+  roles:
+    - role: nginxinc.nginx
+      vars:
+        nginx_type: plus
+        nginx_license:
+          certificate: <path/to/cert>
+          key: <path/to/key>
+        nginx_remove_license: false
