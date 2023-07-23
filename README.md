@@ -1,4 +1,4 @@
-# tf-ansible-nginx
+# terraform-ansible-nginx-on-aws
 
 ## Setting up Terraform for an AWS instance (Ubuntu) and installing NGINX can be done step-by-step as follows:
 
