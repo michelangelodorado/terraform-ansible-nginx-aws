@@ -18,7 +18,7 @@ export AWS_SESSION_TOKEN="YOUR_AWS_SESSION_TOKEN"
 ```
 
 ```
-git clone https://github.com/ericausente/terraform-aws-nginx.git
+git clone https://github.com/ericausente/tf-ansible-nginx.git
 cd terraform-aws-nginx
 terraform init
 terraform apply -auto-approve
