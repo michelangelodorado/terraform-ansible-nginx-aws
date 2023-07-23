@@ -83,6 +83,41 @@ ansible-playbook -i hosts.ini ansible/1-deploy-nginx-oss.yml
 
 The playbook will install NGINX on the specified AWS instance and configure it to serve a simple web app and act as a reverse proxy.
 
+
+Step 6: Deploy NGINX Plus using Ansible.
+
+Created a folder named "license" in the main GitHub directory. This folder is where users can place their NGINX Plus license files.
+
+```
+% tree license 
+license
+├── nginx-repo.crt
+└── nginx-repo.key
+```
+
+
+In the ansible/1-deploy-nginx.yml playbook, I specified the path for the certificate (nginx-repo.crt) and the key (nginx-repo.key) for NGINX Plus license installation.
+
+```
+---
+- name: Deploy NGINX Plus
+  hosts: aws_instance
+  become: true
+  roles:
+    - role: nginxinc.nginx
+      vars:
+        nginx_type: plus
+        nginx_license:
+          certificate: ../license/nginx-repo.crt
+          key: ../license/nginx-repo.key
+        nginx_remove_license: false
+```
+
+The nginx_type: plus specifies that NGINX Plus should be installed, and the nginx_license variable specifies the path to the certificate and key files in the ../license/ directory. The nginx_remove_license: false ensures that the license will not be removed during the playbook execution.
+
+By following these steps, you can deploy NGINX Plus using Ansible, and users can provide their NGINX Plus license by placing the nginx-repo.crt and nginx-repo.key files in the license directory.
+
+
 Additionally, if you want to set up the NGINX App Protect, you can add the necessary tasks to the Ansible playbook to achieve that. You may refer to the NGINX App Protect documentation, alessfg's github repo and create Ansible tasks accordingly.
 
 Remember to customize any paths, variables, or configurations as per your requirements. 
