@@ -1,6 +1,0 @@
----
-- name: Deploy NGINX Open Source
-  hosts: aws_instance
-  become: true
-  roles:
-    - role: nginxinc.nginx
