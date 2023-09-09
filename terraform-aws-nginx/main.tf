@@ -2,13 +2,13 @@ variable "awsprops" {
     type = map                          // Removed the Quotation Marks
     default = {
     region = "ap-southeast-1"           // Singapore
-    vpc = "vpc-01cb4c75878386352"                // Refer to your Created VPC in AWS
-    ami = "ami-0b7e55206a0a22afc"       // AMI ID for Ubuntu - you can check this when creating an EC2 Instance
-    itype = "t2.micro"
-    subnet = "subnet-0a6ba3b850f3b8c9a"          // Refer to your created Subnet in your AWS
+    vpc = "vpc-07edf60e91effdba6"                // Refer to your Created VPC in AWS
+    ami = "ami-002843b0a9e09324a"       // AMI ID for Ubuntu - you can check this when creating an EC2 Instance
+    itype = "t2.medium"
+    subnet = "subnet-0773ebbac868142cb"          // Refer to your created Subnet in your AWS
     publicip = true
-    keyname = "ausente-f5-account-key-value-pair"           // Create one in your environment
-    secgroupname = "IAC-Sec-Group-1"
+    keyname = "dorado-aws-key"           // Create one in your environment
+    secgroupname = "secgrp-dorado"
   }
 }
 
@@ -34,6 +34,14 @@ resource "aws_security_group" "project-iac-sg" {
     from_port = 80
     protocol = "tcp"
     to_port = 80
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+
+  // To Allow Port 443 Transport
+  ingress {
+    from_port = 443
+    protocol = "tcp"
+    to_port = 443
     cidr_blocks = ["0.0.0.0/0"]
   }
 
